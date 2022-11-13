@@ -10,23 +10,23 @@ public class Sword extends Weapon{
     @Override
     public void drawWeapon() {
         System.out.println(getName() + " has been drawn.");
-
     }
 
     @Override
     public void attack() {
-        System.out.println("Player attacked with " + getAttackDamage() + " damage using " + getName() + "!");
+        System.out.println("Player attacked the enemy with " + getName() + ", doing " +
+                getAttackDamage()  + " damage!");
     }
 
     @Override
     public void withdrawWeapon() {
-        System.out.println(getName() + "has been sheathed.");
+        System.out.println(getName() + " has been sheathed.");
     }
 
 
     public float getAttackDamage(){
         float min = 1;
-        float max = 10;
+        float max = 40;
         attackDamage = min + r.nextFloat() * (max - min);
         return attackDamage;
     }

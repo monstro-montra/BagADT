@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class WeaponBag<T> implements Bag<T> {
-    private final ArrayList<T> weapons; //array of weapons
+public class WeaponBag<Object> implements Bag<Object> {
+    private final ArrayList<Weapon> weapons; //array of weapons
 
     //constructor
     public WeaponBag(){
@@ -9,16 +9,22 @@ public class WeaponBag<T> implements Bag<T> {
     }
 
     //Bag methods
+
     @Override
-    public void add(T weapon) {
-        weapons.add(weapon);
-        System.out.println("New weapon added! " + getWeapon(weapons.size() - 1).getName() + ".");
+    public void add(Object item) {
+        weapons.add((Weapon) item);
+        System.out.println("New weapon added of " + getWeapon(weapons.size()-1).getClass()
+                + "! " + "'" + getWeapon(weapons.size() - 1 ).getName() + ".'");
     }
 
     @Override
-    public void discard(T weapon) {
-        System.out.println("Discarded " + "'" + getWeapon(weapons.size() - 1).getName() + ".'");
-        weapons.remove(weapon);
+    public void discard(String itemName) {
+        for (int i = 0; i < weapons.size(); i++){
+            if(weapons.get(i).getName().equals(itemName)) {
+                System.out.println("Removed "+ weapons.get(i).getName() + ".");
+                weapons.remove(i);
+            }
+        }
     }
 
     @Override
@@ -27,19 +33,26 @@ public class WeaponBag<T> implements Bag<T> {
     }
 
     @Override
-    public boolean isEmpty() {
+    public void isEmpty() {
         if (weapons.size() == 0){
             System.out.println("Empty bag!");
-            return true;
         } else {
             System.out.println("Bag is not empty.");
-            return false;
         }
     }
 
     //getters
+    public Weapon getWeapon(String name){
+        for (Weapon weapon : weapons) {
+            if (weapon.getName().equals(name)) {
+                return weapon;
+            }
+        }
+        return null;
+    }
+
     public Weapon getWeapon(int index){
-        return (Weapon)weapons.get(index);
+        return weapons.get(index);
     }
 
 }

@@ -1,7 +1,6 @@
 
 public abstract class Weapon {
     float attackDamage;
-    float magicDamage;
     String name;
 
 
