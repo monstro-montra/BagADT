@@ -3,11 +3,12 @@ public class Main {
 
         WeaponBag weaponsBag = new WeaponBag();
 
+        weaponsBag.add(new Sword("Master Sword"));
 
+        weaponsBag.getWeapon(0).drawWeapon();
 
-        weaponsBag.add(new Sword());
+        weaponsBag.getWeapon(0).drawWeapon();
 
-        weaponsBag.getWeapon(0).attack();
 
         weaponsBag.isEmpty();
     }

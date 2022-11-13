@@ -1,22 +1,23 @@
 import java.util.ArrayList;
 
 public class WeaponBag<T> implements Bag<T> {
-    private int numWeapons;
-    private ArrayList<T> weapons; //array of weapons
+    private final ArrayList<T> weapons; //array of weapons
 
     //constructor
     public WeaponBag(){
-        this.weapons = (ArrayList<T>) new ArrayList<Object>();
+        this.weapons = new ArrayList<>();
     }
 
     //Bag methods
     @Override
     public void add(T weapon) {
         weapons.add(weapon);
+        System.out.println("New weapon added! " + getWeapon(weapons.size() - 1).getName() + ".");
     }
 
     @Override
     public void discard(T weapon) {
+        System.out.println("Discarded " + "'" + getWeapon(weapons.size() - 1).getName() + ".'");
         weapons.remove(weapon);
     }
 
@@ -38,7 +39,7 @@ public class WeaponBag<T> implements Bag<T> {
 
     //getters
     public Weapon getWeapon(int index){
-        return (Weapon) weapons.get(index);
+        return (Weapon)weapons.get(index);
     }
 
 }
